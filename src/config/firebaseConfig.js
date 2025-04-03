@@ -1,16 +1,17 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyALZpVbt65lIqoaG_nfH2tyfpOhVuSeIpU',
-  authDomain: 'react-login-128c3.firebaseapp.com',
-  projectId: 'react-login-128c3',
-  storageBucket: 'react-login-128c3.firebasestorage.app',
-  messagingSenderId: '500027308831',
-  appId: '1:500027308831:web:81dc51b74c07c7a57fce2a',
-  measurementId: 'G-LG701FCDCR',
+  apiKey: "AIzaSyCZthteRjlfFXiTxBD4mSnnJCcbJoUC9Bg",
+  authDomain: "ptac-projeto-bfa92.firebaseapp.com",
+  projectId: "ptac-projeto-bfa92",
+  storageBucket: "ptac-projeto-bfa92.firebasestorage.app",
+  messagingSenderId: "199301040698",
+  appId: "1:199301040698:web:96a9a2c98e12c664e1c303",
+  measurementId: "G-N75MXMPEFE"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
