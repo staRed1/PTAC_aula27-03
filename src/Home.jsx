@@ -1,16 +1,7 @@
-import React from 'react';
-export default function home() {
-  return (
-    <>
-      <h1>Pagina Inicial</h1>
-      <br />
-      <a href="/login">
-        login
-      </a>
-      <br />
-      <a href="/cadastro">
-        Cadastrar
-      </a>
-    </>
-  );
+export default function Home() {
+  return(
+    <main>
+      <h1>Bem-vindo!!!</h1>
+    </main>
+  )
 }
