@@ -1,25 +1,37 @@
-import {Link, Navigate, Outlet} from 'react-router-dom';
-import {jwtVerify } from 'jose';
+import { Link, Navigate, Outlet } from 'react-router-dom';
+import { jwtVerify } from 'jose';
 import { useEffect, useState } from 'react';
 
 const AuthMiddleware = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
+
     useEffect(() => {
         const verifyToken = async () => {
             const token = localStorage.getItem('token');
             const secretKey = new TextEncoder().encode('minhaChaveSecreta');
-            const isAuthenticated = await jwtVerify(token, secretKey);
-            if (isAuthenticated) {
-                setIsAuthenticated(true);
+
+            if (!token) {
+                setIsAuthenticated(false);
+                return;
             }
-        
+
+            try {
+                await jwtVerify(token, secretKey);
+                setIsAuthenticated(true);
+            } catch (error) {
+                console.warn('Token inválido ou expirado', error);
+                setIsAuthenticated(false);
+            }
         };
+
         verifyToken();
     }, []);
 
     if (isAuthenticated === null) {
-        return <Link to= "/login">Você está sem acesso!</Link>;
+        return <p>Verificando autenticação...</p>; // ou um spinner, se preferir
     }
-    return isAuthenticated == true ? <Outlet /> : <Navigate to="/login" />;
+
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
+
 export default AuthMiddleware;

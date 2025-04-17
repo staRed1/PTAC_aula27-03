@@ -15,8 +15,9 @@ export default function Registrar() {
             await createUserWithEmailAndPassword(auth, email, senha);
             navigation('/login');
         } catch (erro) {
-            alert('Erro ao cadastrar');
-        }
+            alert('Erro ao cadastrar: ' + erro.message);
+            console.error(erro.code, erro.message);
+          }
     };
     return (
         <main>

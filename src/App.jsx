@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router";
-
+import { SignJWT } from 'jose';
 import { auth } from './config/firebaseConfig.js';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -9,7 +9,7 @@ export default function App() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  const navigate = useNavigate
+  const navigate = useNavigate();
 
   const autenticarComFirebase = async (evento) => {
     evento.preventDefault();
